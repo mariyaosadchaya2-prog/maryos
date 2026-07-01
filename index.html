@@ -82,53 +82,55 @@
   /* ============ HERO ============ */
   .hero {
     position: relative; min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden; background: #1a1410;
-  }
-  .hero__bg {
-    position: absolute; inset: 0;
-    background-image: url('assets/maria-hero.jpg');
-    background-size: cover; background-position: center 25%;
-    background-repeat: no-repeat;
-  }
-  .hero__bg::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(26, 20, 16, 0.55) 0%,
-      rgba(26, 20, 16, 0.25) 35%,
-      rgba(26, 20, 16, 0.55) 70%,
-      rgba(26, 20, 16, 0.92) 100%
-    );
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    overflow: hidden; background: #1a1410; color: #FFF8EC;
   }
   .hero__content {
-    position: relative; z-index: 2; text-align: center;
-    max-width: 920px; padding: 120px 24px 80px;
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: flex-start; text-align: left;
+    padding: 140px 6vw 100px;
+    background: linear-gradient(135deg, #1a1410 0%, #241a11 55%, #2A2118 100%);
+  }
+  .hero__content::after {
+    content: ''; position: absolute; top: 0; right: -1px; bottom: 0;
+    width: 120px; background: linear-gradient(to right, transparent, #1a1410 90%);
+    pointer-events: none; z-index: 3;
+  }
+  .hero__image {
+    position: relative;
+    background-image: url('assets/maria-hero.jpg');
+    background-size: cover; background-position: 40% 20%;
+    background-repeat: no-repeat;
+  }
+  .hero__image::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(26, 20, 16, 0) 60%, rgba(26, 20, 16, 0.75) 100%);
   }
   .hero__eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 8px 18px; border: 1px solid rgba(201, 168, 118, 0.4);
     border-radius: 999px; font-size: 11.5px; letter-spacing: 0.16em;
     color: #C9A876; text-transform: uppercase; margin-bottom: 36px;
-    background: rgba(26, 20, 16, 0.3); backdrop-filter: blur(6px);
+    background: rgba(255, 248, 236, 0.04);
   }
   .hero__eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A876; }
   .hero__title {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2.6rem, 6.2vw, 5.4rem);
+    font-size: clamp(2.4rem, 4.6vw, 4.6rem);
     font-weight: 500; line-height: 1.02; letter-spacing: -1.5px;
-    color: #FFF8EC; margin: 0 0 32px;
+    color: #FFF8EC; margin: 0 0 32px; max-width: 620px;
   }
   .hero__title em { font-style: italic; font-weight: 400; color: #C9A876; }
   .hero__subtitle {
-    font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.7; font-weight: 300;
-    color: rgba(255, 248, 236, 0.78); max-width: 640px;
-    margin: 0 auto 48px;
+    font-size: clamp(1rem, 1.15vw, 1.1rem); line-height: 1.65; font-weight: 300;
+    color: rgba(255, 248, 236, 0.78); max-width: 500px;
+    margin: 0 0 48px;
   }
   .hero__subtitle strong { color: #FFF8EC; font-weight: 500; }
   .hero__cta-group {
     display: flex; gap: 18px; align-items: center;
-    justify-content: center; flex-wrap: wrap;
+    justify-content: flex-start; flex-wrap: wrap;
   }
   .hero__cta {
     background: #C9A876; color: #2A2118;
@@ -145,8 +147,8 @@
   }
   .hero__cta-secondary:hover { color: #C9A876; border-color: #C9A876; }
   .hero__scroll {
-    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-    z-index: 2; font-size: 10.5px; letter-spacing: 0.28em;
+    position: absolute; bottom: 32px; left: 6vw;
+    z-index: 4; font-size: 10.5px; letter-spacing: 0.28em;
     text-transform: uppercase; color: rgba(255, 248, 236, 0.55);
     display: flex; flex-direction: column; align-items: center; gap: 10px;
   }
@@ -159,11 +161,19 @@
     50% { transform: scaleY(1.4); opacity: 1; }
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     .nav__links { display: none; }
     .nav__inner { padding: 0 16px; }
     .nav__logo-role { display: none; }
-    .hero__content { padding: 130px 20px 100px; }
+    .hero { grid-template-columns: 1fr; grid-template-rows: 55vh 1fr; }
+    .hero__content { padding: 60px 24px 90px; }
+    .hero__content::after { display: none; }
+    .hero__image { order: -1; background-position: center 20%; min-height: 55vh; }
+    .hero__image::after {
+      background: linear-gradient(to bottom, rgba(26, 20, 16, 0) 40%, rgba(26, 20, 16, 0.9) 95%, #1a1410 100%);
+    }
+    .hero__title { font-size: clamp(2rem, 8vw, 3rem); }
+    .hero__scroll { display: none; }
   }
 </style>
 </helmet>
@@ -191,9 +201,8 @@
     </div>
   </nav>
 
-  <!-- ============ HERO (fullscreen, toniri-style) ============ -->
+  <!-- ============ HERO (split-layout) ============ -->
   <section id="top" class="hero">
-    <div class="hero__bg"></div>
     <div class="hero__content reveal">
       <div class="hero__eyebrow">
         <span class="hero__eyebrow-dot"></span>
@@ -213,11 +222,12 @@
         </a>
         <a href="#problem" class="hero__cta-secondary">Это про меня?</a>
       </div>
+      <div class="hero__scroll">
+        скролл
+        <span class="hero__scroll-line"></span>
+      </div>
     </div>
-    <div class="hero__scroll">
-      скролл
-      <span class="hero__scroll-line"></span>
-    </div>
+    <div class="hero__image" role="img" aria-label="Мария Осадчая с юными вокалистами"></div>
   </section>
 
   <!-- ============ STATS + TRUST STRIP ============ -->
