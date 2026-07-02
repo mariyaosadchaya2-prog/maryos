@@ -148,15 +148,26 @@
     border-radius: 0 12px 12px 0;
   }
   .hero__stats {
-    display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline;
-    margin: 0 0 44px; font-size: 12.5px; color: var(--text-soft);
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px; margin: 0 0 44px; max-width: 560px;
   }
-  .hero__stat { display: inline-flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+  .hero__stat {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 14px 16px; border-radius: 14px;
+    background: rgba(184, 147, 90, 0.06);
+    border: 1px solid var(--border-soft);
+  }
   .hero__stat-num {
     font-family: var(--font-display); font-weight: 500;
-    color: var(--accent-deep); font-size: 17px; letter-spacing: -0.02em;
+    color: var(--accent-deep); font-size: 22px; letter-spacing: -0.02em; line-height: 1;
   }
-  .hero__stat-sep { color: var(--border); }
+  .hero__stat-label {
+    font-size: 12.5px; line-height: 1.35; color: var(--text-soft);
+  }
+  .hero__stat-sep { display: none; }
+  @media (max-width: 520px) {
+    .hero__stats { grid-template-columns: 1fr; }
+  }
   .hero__cta-group {
     display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
   }
@@ -257,13 +268,22 @@
         Наставник Музыкальной академии Ларисы Долиной&nbsp;· Приглашённый эксперт форума Леонида Агутина 2021–2026&nbsp;· Соавтор проектов ДНК Артиста и Института вокальной психологии
       </div>
       <div class="hero__stats">
-        <span class="hero__stat"><span class="hero__stat-num">2000+</span> артистов получили мою поддержку</span>
-        <span class="hero__stat-sep">·</span>
-        <span class="hero__stat"><span class="hero__stat-num">5+</span> лет в практике вокального психолога</span>
-        <span class="hero__stat-sep">·</span>
-        <span class="hero__stat"><span class="hero__stat-num">700+</span> педагогов прошло обучение</span>
-        <span class="hero__stat-sep">·</span>
-        <span class="hero__stat"><span class="hero__stat-num">20+</span> лет в практике вокального педагога и артиста</span>
+        <div class="hero__stat">
+          <span class="hero__stat-num">2000+</span>
+          <span class="hero__stat-label">артистов получили мою поддержку</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">5+</span>
+          <span class="hero__stat-label">лет в практике вокального психолога</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">700+</span>
+          <span class="hero__stat-label">педагогов прошло обучение</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">20+</span>
+          <span class="hero__stat-label">лет в практике вокального педагога и артиста</span>
+        </div>
       </div>
       <div class="hero__cta-group">
         <a href="#booking" class="hero__cta">
