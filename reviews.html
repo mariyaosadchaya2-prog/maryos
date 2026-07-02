@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Отзывы — Мария Осадчая</title>
+<meta name="description" content="Отзывы клиентов Марии Осадчей — родителей, артистов, педагогов и участников курсов. Все отзывы размещены с разрешения.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  .rev-tab {
+    border: 1px solid var(--border); background: transparent; color: var(--text);
+    padding: 12px 26px; border-radius: 999px; font-family: inherit;
+    font-size: 13px; letter-spacing: 0.02em; cursor: pointer;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .rev-tab--active { background: var(--text); color: #F7F3EE; border-color: var(--text); }
+  .rev-panel { display: none; }
+  .rev-panel--active { display: grid; }
+  .rev-card {
+    background: var(--bg-cream-card); border-radius: 22px; padding: 34px 32px;
+    border: 1px solid var(--border-soft); display: flex; flex-direction: column;
+  }
+  .rev-card__quote {
+    font-family: var(--font-italic); font-style: italic;
+    font-size: 17px; line-height: 1.5; color: var(--text);
+    margin: 20px 0 24px;
+  }
+  .rev-card__author { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-soft); font-size: 13px; color: var(--text-soft); }
+  .rev-card__name { font-weight: 500; color: var(--text); }
+  .rev-card__meta { margin-top: 3px; font-size: 12px; color: var(--text-mute); }
+  .rev-card__mark { font-family: var(--font-italic); font-style: italic; font-size: 44px; line-height: 0.6; color: var(--accent-soft); height: 18px; }
+</style>
+</head>
+<body>
+
+  <nav class="nav" id="site-nav">
+    <div class="nav__inner">
+      <a href="index.html#top" class="nav__logo">
+        <div class="nav__logo-mark">М</div>
+        <div class="nav__logo-text">
+          <div class="nav__logo-name">Мария&nbsp;Осадчая</div>
+          <div class="nav__logo-role">вокальный психолог</div>
+        </div>
+      </a>
+      <div class="nav__links">
+        <a href="method.html">Метод</a>
+        <a href="formats.html">Форматы</a>
+        <a href="products.html">Продукты</a>
+        <a href="publications.html">Публикации</a>
+        <a href="reviews.html">Отзывы</a>
+        <a href="index.html#booking" class="nav__cta">Записаться</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <div class="breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span class="breadcrumbs__sep">/</span>
+        <span>Отзывы</span>
+      </div>
+      <div class="reveal">
+        <div class="page-hero__eyebrow">— Отзывы</div>
+        <h1 class="page-hero__title">Отзывы <em>клиентов</em></h1>
+        <p class="page-hero__lead">Все отзывы размещены с разрешения клиентов. В отзывах родителей имена детей и родителей не указаны — это принцип психологической этики. С отзывами взрослых артистов и педагогов, разместивших их публично, я работаю от имени.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--warm">
+    <div class="section__inner">
+      <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 48px; flex-wrap: wrap;">
+        <button class="rev-tab rev-tab--active" data-tab="parents">Родители</button>
+        <button class="rev-tab" data-tab="artists">Артисты</button>
+        <button class="rev-tab" data-tab="teachers">Педагоги</button>
+        <button class="rev-tab" data-tab="courses">Участники курсов</button>
+      </div>
+
+      <!-- PARENTS -->
+      <div class="rev-panel rev-panel--active" data-panel="parents" style="grid-template-columns: repeat(3, 1fr); gap: 22px;">
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Дочь перестала плакать перед конкурсами. Уходит на сцену — и я больше не отгадываю по её походке, как всё пройдёт.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Мама 14-летней вокалистки</div>
+            <div class="rev-card__meta">Финалистка регионального конкурса · 8 сессий</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">После «Голоса. Дети» сын боялся даже репетировать. С Марией мы вернули ему желание — сначала выйти в комнату к пианино, потом на сцену.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Мама 11-летнего вокалиста</div>
+            <div class="rev-card__meta">Участник «Голос. Дети» · сопровождение семьи</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Мы шли готовить дочь к консерватории — и получили гораздо больше. Разобрались, где я как мама подмывала её опору, а где помогала.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Мама 16-летней вокалистки</div>
+            <div class="rev-card__meta">Подготовка к вузу · длинное сопровождение</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Мы наконец услышали, чего дочь хочет от вокала на самом деле. Оказалось, совсем не того, что я ей проектировала.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Мама 13-летней вокалистки</div>
+            <div class="rev-card__meta">Работа с семейной системой · 6 сессий</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Дома пел свободно, на сцене — деревянный. После работы с Марией я поняла, что моя тревога и была тем «деревом» — я его на него передавала.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Мама 12-летнего вокалиста</div>
+            <div class="rev-card__meta">Разбор родительской позиции · 4 сессии</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Мария — единственный специалист, который слышал не только дочь, но и меня. Без её помощи мы бы не дошли до финала.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Мама 15-летней вокалистки</div>
+            <div class="rev-card__meta">Финалистка телепроекта · длинное сопровождение</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- ARTISTS -->
+      <div class="rev-panel" data-panel="artists" style="grid-template-columns: repeat(3, 1fr); gap: 22px;">
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">С Марией я разобрал не технику — а то, что мешало мне звучать своим. Это оказалось важнее любого мастер-класса.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Гарик Зебелян</div>
+            <div class="rev-card__meta">Певец, участник команды Ларисы Долиной</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Я перестала пытаться звучать «как надо» и стала звучать собой. Свои песни зазвучали по-другому — даже мне.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Ани Галстян</div>
+            <div class="rev-card__meta">Вокалистка, автор-исполнитель</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Работа с Марией сняла то, что тянуло меня назад на сцене — страх «недостоинства». Без него я и звучу, и живу иначе.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Настя Смыкова</div>
+            <div class="rev-card__meta">Вокалистка, участница телепроектов</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Раньше на телепроекте меня заклинивало от давления. Мария научила меня видеть, что происходит с телом, и возвращать себе присутствие.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Юлия Шегай</div>
+            <div class="rev-card__meta">Вокалистка</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- TEACHERS -->
+      <div class="rev-panel" data-panel="teachers" style="grid-template-columns: repeat(3, 1fr); gap: 22px;">
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">У меня как у педагога наконец появился язык, чтобы говорить с учеником о том, что с ним происходит — а не только о технике.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Ирина Денисенко</div>
+            <div class="rev-card__meta">Вокальный педагог</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Разобрала свои границы: с учениками, с их родителями, с самой собой. Студия перестала съедать меня — я в ней живу, а не выживаю.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Надежда Толстая</div>
+            <div class="rev-card__meta">Руководитель вокальной студии</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Программа Института дала мне то, чего не даёт ни одна консерватория — метод работы с психикой поющего.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Наталья Толмачёва</div>
+            <div class="rev-card__meta">Наставник, педагог по вокалу</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Я больше не боюсь «сложных» учеников. Понимаю, где заканчивается моя зона как педагога — и куда мягко направить дальше.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Елена Сахорова</div>
+            <div class="rev-card__meta">Педагог по вокалу</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Мне было страшно выходить в частную практику — Мария помогла собрать «свой» подход. Через полгода у меня заполнилось расписание.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Ксения Коробкова</div>
+            <div class="rev-card__meta">Вокальный педагог</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- COURSES -->
+      <div class="rev-panel" data-panel="courses" style="grid-template-columns: repeat(3, 1fr); gap: 22px;">
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Курс дал мне не только знания — а прожитый опыт: я не «читала», а прожила эти границы. И это изменило мою практику.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Участница</div>
+            <div class="rev-card__meta">«Профессиональное обновление вокального педагога»</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Перестала «наставлять» и научилась слушать. Кажется, самой большой ценностью было это.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Участница</div>
+            <div class="rev-card__meta">Практикум для педагогов</div>
+          </div>
+        </article>
+        <article class="rev-card">
+          <div class="rev-card__mark">“</div>
+          <p class="rev-card__quote">Форум с Леонидом Агутиным и Марией — три дня, которые сдвинули мою внутреннюю точку опоры на сцене.</p>
+          <div class="rev-card__author">
+            <div class="rev-card__name">Участник</div>
+            <div class="rev-card__meta">Форум Леонида Агутина 2024</div>
+          </div>
+        </article>
+      </div>
+
+      <div style="text-align: center; margin-top: 56px;">
+        <a href="index.html#booking" class="btn">Записаться на консультацию <span style="font-size: 18px;">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: #2A2028; color: #B8A8B0; padding: 84px 48px 36px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(201, 168, 118, 0.15);">
+        <div>
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #C9A876, #8B6B3D); display: flex; align-items: center; justify-content: center; color: #FFF8EC; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; font-style: italic;">М</div>
+            <div>
+              <div class="display" style="font-size: 20px; font-weight: 500; color: #F7F3EE;">Мария Осадчая</div>
+              <div style="font-size: 12px; color: #C9A876; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 3px;">Вокальный психолог</div>
+            </div>
+          </div>
+          <p style="font-size: 14px; line-height: 1.65; max-width: 380px; margin: 0 0 20px; color: #B8A8B0;">Я не учу петь — я работаю с тем, что мешает голосу нести чувство.</p>
+        </div>
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A876; margin-bottom: 22px;">Разделы</div>
+          <div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
+            <a href="about.html">Обо мне</a>
+            <a href="method.html">Метод</a>
+            <a href="formats.html">Форматы</a>
+            <a href="products.html">Продукты</a>
+            <a href="publications.html">Публикации</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A876; margin-bottom: 22px;">Проекты</div>
+          <div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
+            <a href="https://dna-artist-new2.vercel.app" target="_blank" rel="noopener">«ДНК&nbsp;Артиста»</a>
+            <a href="https://ivp-theta.vercel.app" target="_blank" rel="noopener">Институт вокальной психологии</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A876; margin-bottom: 22px;">Контакты</div>
+          <div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
+            <a href="mailto:hello@osadchaya.ru" style="color: #F7F3EE;">hello@osadchaya.ru</a>
+            <span>Москва · онлайн по всему миру</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding-top: 30px; font-size: 12px; color: #7A6A70;">© 2026 Мария Осадчая. Все права защищены.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var nav = document.getElementById('site-nav');
+      if (nav) {
+        var onScroll = function(){ if (window.scrollY > 40) nav.classList.add('nav--scrolled'); else nav.classList.remove('nav--scrolled'); };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+      var tabs = document.querySelectorAll('.rev-tab');
+      var panels = document.querySelectorAll('.rev-panel');
+      tabs.forEach(function(tab){
+        tab.addEventListener('click', function(){
+          var name = tab.getAttribute('data-tab');
+          tabs.forEach(function(t){ t.classList.toggle('rev-tab--active', t === tab); });
+          panels.forEach(function(p){
+            p.classList.toggle('rev-panel--active', p.getAttribute('data-panel') === name);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
