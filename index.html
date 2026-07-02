@@ -14,258 +14,268 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg: #F7F3EE;
+    --bg-warm: #EDE5DE;
+    --bg-warm-2: #E4D6C4;
+    --bg-cream-card: #FFFBF4;
+    --text: #2A2028;
+    --text-soft: #5B4D52;
+    --text-mute: #8B7E82;
+    --accent: #B8935A;
+    --accent-soft: #C9A876;
+    --accent-deep: #8B6B3D;
+    --accent-tint: rgba(184, 147, 90, 0.12);
+    --border: rgba(139, 107, 61, 0.18);
+    --border-soft: rgba(139, 107, 61, 0.1);
+    --font-display: 'Unbounded', 'Inter', -apple-system, sans-serif;
+    --font-italic: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+  }
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: #F7F1E6; }
-  body { font-family: 'Inter', -apple-system, sans-serif; color: #2A2118; -webkit-font-smoothing: antialiased; }
-  ::selection { background: #B8935A; color: #FFF8EC; }
-  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+  html, body { margin: 0; padding: 0; background: var(--bg); }
+  body { font-family: var(--font-body); color: var(--text); -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--accent); color: #FFF8EC; }
+  .serif { font-family: var(--font-italic); }
+  .display { font-family: var(--font-display); letter-spacing: -0.02em; }
   html { scroll-behavior: smooth; }
   a { color: inherit; text-decoration: none; }
   @keyframes floatup { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
   .reveal { animation: floatup 0.9s ease both; }
 
-  /* ============ FLOATING GLASS NAV ============ */
+  /* ============ FLOATING GLASS NAV (light) ============ */
   .nav {
     position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
     width: calc(100% - 48px); max-width: 1200px; z-index: 100;
-    height: 60px; display: flex; align-items: center;
-    background: rgba(255, 248, 236, 0.08);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 248, 236, 0.14);
+    height: 62px; display: flex; align-items: center;
+    background: rgba(255, 251, 244, 0.72);
+    backdrop-filter: blur(18px) saturate(1.1);
+    -webkit-backdrop-filter: blur(18px) saturate(1.1);
+    border: 1px solid rgba(139, 107, 61, 0.14);
     border-radius: 100px;
+    box-shadow: 0 8px 32px -12px rgba(74, 60, 38, 0.12);
     transition: background 0.4s ease, border 0.4s ease, box-shadow 0.4s ease, top 0.4s ease, width 0.4s ease, border-radius 0.4s ease, height 0.4s ease;
   }
   .nav__inner {
     display: flex; align-items: center; justify-content: space-between;
-    width: 100%; padding: 0 24px; gap: 24px;
+    width: 100%; padding: 0 22px; gap: 24px;
   }
   .nav__logo { display: flex; align-items: center; gap: 12px; }
   .nav__logo-mark {
     width: 36px; height: 36px; border-radius: 50%;
-    background: linear-gradient(135deg, #C9A876, #8B6B3D);
+    background: linear-gradient(135deg, var(--accent-soft), var(--accent-deep));
     display: flex; align-items: center; justify-content: center;
-    color: #FFF8EC; font-family: 'Cormorant Garamond', serif;
+    color: #FFF8EC; font-family: var(--font-italic);
     font-weight: 600; font-size: 18px; font-style: italic;
   }
-  .nav__logo-text { line-height: 1.1; color: #FFF8EC; }
-  .nav__logo-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; letter-spacing: 0.2px; }
-  .nav__logo-role { font-size: 10.5px; letter-spacing: 0.18em; color: #C9A876; text-transform: uppercase; margin-top: 2px; }
-  .nav__links { display: flex; align-items: center; gap: 28px; }
+  .nav__logo-text { line-height: 1.1; color: var(--text); }
+  .nav__logo-name { font-family: var(--font-display); font-size: 15px; font-weight: 500; letter-spacing: -0.01em; }
+  .nav__logo-role { font-size: 10px; letter-spacing: 0.18em; color: var(--accent-deep); text-transform: uppercase; margin-top: 3px; }
+  .nav__links { display: flex; align-items: center; gap: 26px; }
   .nav__links a {
-    font-size: 13px; letter-spacing: 0.03em; color: rgba(255, 248, 236, 0.82);
+    font-size: 13px; letter-spacing: 0.02em; color: var(--text-soft);
     transition: color 0.25s ease;
   }
-  .nav__links a:hover { color: #C9A876; }
+  .nav__links a:hover { color: var(--accent-deep); }
   .nav__cta {
     font-size: 12.5px !important; font-weight: 500;
-    padding: 9px 20px; border: 1px solid #C9A876;
-    color: #C9A876 !important; border-radius: 100px;
-    transition: background 0.25s ease, color 0.25s ease;
+    padding: 10px 20px; background: var(--text);
+    color: #FFF8EC !important; border-radius: 100px;
+    transition: background 0.25s ease;
   }
-  .nav__cta:hover { background: #C9A876; color: #2A2118 !important; }
-  .nav__burger { display: none; }
+  .nav__cta:hover { background: var(--accent-deep); }
 
   .nav--scrolled {
-    top: 0; width: 100%; height: 62px; border-radius: 0;
-    background: rgba(247, 241, 230, 0.95);
+    top: 0; width: 100%; height: 64px; border-radius: 0;
+    background: rgba(247, 243, 238, 0.94);
     border-color: transparent;
-    box-shadow: 0 1px 0 rgba(184, 147, 90, 0.15);
+    box-shadow: 0 1px 0 var(--border-soft);
   }
-  .nav--scrolled .nav__logo-text,
-  .nav--scrolled .nav__logo-name { color: #2A2118; }
-  .nav--scrolled .nav__logo-role { color: #8B6B3D; }
-  .nav--scrolled .nav__links a { color: #4A3D2D; }
-  .nav--scrolled .nav__links a:hover { color: #8B6B3D; }
 
-  /* ============ HERO ============ */
+  /* ============ HERO (light, split) ============ */
   .hero {
     position: relative; min-height: 100vh;
-    display: grid; grid-template-columns: 1.1fr 1fr;
-    overflow: hidden; background: #1a1410; color: #FFF8EC;
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
+    overflow: hidden; background: var(--bg); color: var(--text);
+    padding: 140px 6vw 80px;
+    align-items: center;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -20%; right: -20%;
+    width: 60%; height: 90%;
+    background: radial-gradient(circle at center, rgba(184, 147, 90, 0.15), transparent 65%);
+    pointer-events: none; z-index: 0;
   }
   .hero__content {
     position: relative; z-index: 2;
-    display: flex; flex-direction: column; justify-content: center;
+    display: flex; flex-direction: column;
     align-items: flex-start; text-align: left;
-    padding: 140px 6vw 100px;
-    background: linear-gradient(135deg, #1a1410 0%, #241a11 55%, #2A2118 100%);
-  }
-  .hero__content::after {
-    content: ''; position: absolute; top: 0; right: -1px; bottom: 0;
-    width: 120px; background: linear-gradient(to right, transparent, #1a1410 90%);
-    pointer-events: none; z-index: 3;
-  }
-  .hero__image {
-    position: relative;
-    background-image: url('assets/maria-hero.jpg');
-    background-size: cover; background-position: 40% 20%;
-    background-repeat: no-repeat;
-  }
-  .hero__image::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(26, 20, 16, 0) 60%, rgba(26, 20, 16, 0.75) 100%);
+    padding-right: 4vw;
   }
   .hero__eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
-    padding: 8px 18px; border: 1px solid rgba(201, 168, 118, 0.4);
-    border-radius: 999px; font-size: 11.5px; letter-spacing: 0.16em;
-    color: #C9A876; text-transform: uppercase; margin-bottom: 36px;
-    background: rgba(255, 248, 236, 0.04);
+    padding: 8px 18px; border: 1px solid var(--border);
+    border-radius: 999px; font-size: 11px; letter-spacing: 0.18em;
+    color: var(--accent-deep); text-transform: uppercase; margin-bottom: 32px;
+    background: rgba(255, 251, 244, 0.5);
   }
-  .hero__eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A876; }
+  .hero__eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
   .hero__title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2.4rem, 4.6vw, 4.6rem);
-    font-weight: 500; line-height: 1.02; letter-spacing: -1.5px;
-    color: #FFF8EC; margin: 0 0 32px; max-width: 620px;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4.4vw, 4.2rem);
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.03em;
+    color: var(--text); margin: 0 0 28px; max-width: 620px;
   }
-  .hero__title em { font-style: italic; font-weight: 400; color: #C9A876; }
+  .hero__title em {
+    font-family: var(--font-italic); font-style: italic;
+    font-weight: 500; color: var(--accent-deep); letter-spacing: -0.01em;
+  }
   .hero__subtitle {
-    font-size: clamp(1rem, 1.15vw, 1.1rem); line-height: 1.65; font-weight: 300;
-    color: rgba(255, 248, 236, 0.78); max-width: 500px;
-    margin: 0 0 48px;
+    font-size: clamp(1rem, 1.15vw, 1.15rem); line-height: 1.55; font-weight: 400;
+    color: var(--text-soft); max-width: 540px;
+    margin: 0 0 36px;
   }
-  .hero__subtitle strong { color: #FFF8EC; font-weight: 500; }
+  .hero__subtitle strong { color: var(--text); font-weight: 500; }
+  .hero__regalia {
+    font-size: 12.5px; line-height: 1.7; color: var(--text-soft);
+    max-width: 540px; margin: 0 0 28px;
+    padding: 18px 22px;
+    border-left: 2px solid var(--accent);
+    background: rgba(184, 147, 90, 0.05);
+    border-radius: 0 12px 12px 0;
+  }
+  .hero__stats {
+    display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline;
+    margin: 0 0 44px; font-size: 12.5px; color: var(--text-soft);
+  }
+  .hero__stat { display: inline-flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+  .hero__stat-num {
+    font-family: var(--font-display); font-weight: 500;
+    color: var(--accent-deep); font-size: 17px; letter-spacing: -0.02em;
+  }
+  .hero__stat-sep { color: var(--border); }
   .hero__cta-group {
-    display: flex; gap: 18px; align-items: center;
-    justify-content: flex-start; flex-wrap: wrap;
+    display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
   }
   .hero__cta {
-    background: #C9A876; color: #2A2118;
-    padding: 17px 34px; border-radius: 999px;
-    font-size: 14.5px; font-weight: 500; letter-spacing: 0.02em;
+    background: var(--text); color: #FFF8EC;
+    padding: 17px 32px; border-radius: 999px;
+    font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
     display: inline-flex; align-items: center; gap: 12px;
     transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   }
-  .hero__cta:hover { background: #FFF8EC; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+  .hero__cta:hover { background: var(--accent-deep); transform: translateY(-2px); box-shadow: 0 14px 32px -12px rgba(74, 60, 38, 0.4); }
   .hero__cta-secondary {
-    padding: 17px 8px; font-size: 14.5px; color: #FFF8EC;
-    border-bottom: 1px solid rgba(255, 248, 236, 0.5);
+    font-size: 14px; color: var(--text);
+    border-bottom: 1px solid var(--text);
+    padding-bottom: 3px;
     transition: color 0.25s ease, border-color 0.25s ease;
   }
-  .hero__cta-secondary:hover { color: #C9A876; border-color: #C9A876; }
-  .hero__scroll {
-    position: absolute; bottom: 32px; left: 6vw;
-    z-index: 4; font-size: 10.5px; letter-spacing: 0.28em;
-    text-transform: uppercase; color: rgba(255, 248, 236, 0.55);
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  .hero__cta-secondary:hover { color: var(--accent-deep); border-color: var(--accent-deep); }
+
+  .hero__portrait {
+    position: relative; z-index: 1;
+    aspect-ratio: 4 / 5;
+    border-radius: 28px; overflow: hidden;
+    background: var(--bg-warm-2);
+    box-shadow:
+      0 40px 80px -30px rgba(74, 60, 38, 0.35),
+      0 0 0 1px rgba(139, 107, 61, 0.08);
+    justify-self: center;
+    width: 100%; max-width: 480px;
   }
-  .hero__scroll-line {
-    width: 1px; height: 32px; background: linear-gradient(to bottom, rgba(255, 248, 236, 0), rgba(201, 168, 118, 0.7));
-    animation: scrollpulse 2.4s ease-in-out infinite;
+  .hero__portrait img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 20%;
+    display: block;
   }
-  @keyframes scrollpulse {
-    0%, 100% { transform: scaleY(1); opacity: 0.55; }
-    50% { transform: scaleY(1.4); opacity: 1; }
+  .hero__portrait-tag {
+    position: absolute; bottom: 20px; left: 20px;
+    background: rgba(42, 32, 40, 0.72);
+    backdrop-filter: blur(10px);
+    color: #FFF8EC;
+    padding: 10px 16px; border-radius: 100px;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .hero__portrait-tag::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent-soft);
   }
 
   @media (max-width: 960px) {
     .nav__links { display: none; }
-    .nav__inner { padding: 0 16px; }
+    .nav__inner { padding: 0 18px; }
     .nav__logo-role { display: none; }
-    .hero { grid-template-columns: 1fr; grid-template-rows: 55vh 1fr; }
-    .hero__content { padding: 60px 24px 90px; }
-    .hero__content::after { display: none; }
-    .hero__image { order: -1; background-position: center 20%; min-height: 55vh; }
-    .hero__image::after {
-      background: linear-gradient(to bottom, rgba(26, 20, 16, 0) 40%, rgba(26, 20, 16, 0.9) 95%, #1a1410 100%);
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 110px 24px 60px;
+      gap: 40px;
     }
-    .hero__title { font-size: clamp(2rem, 8vw, 3rem); }
-    .hero__scroll { display: none; }
+    .hero__content { padding-right: 0; order: 2; }
+    .hero__portrait { order: 1; max-width: 340px; aspect-ratio: 4 / 5; }
+    .hero__title { font-size: clamp(1.9rem, 8vw, 2.6rem); }
   }
 </style>
 </helmet>
 
 <div style="background: #F7F1E6; color: #2A2118; min-height: 100vh; overflow-x: hidden;">
 
-  <!-- ============ FLOATING GLASS NAV ============ -->
+  <!-- ============ FLOATING GLASS NAV (light) ============ -->
   <nav class="nav" id="site-nav">
     <div class="nav__inner">
       <a href="#top" class="nav__logo">
         <div class="nav__logo-mark">М</div>
         <div class="nav__logo-text">
-          <div class="nav__logo-name">Мария Осадчая</div>
+          <div class="nav__logo-name">Мария&nbsp;Осадчая</div>
           <div class="nav__logo-role">вокальный психолог</div>
         </div>
       </a>
       <div class="nav__links">
-        <a href="#problem">В&nbsp;чём&nbsp;проблема</a>
-        <a href="#services">Услуги</a>
-        <a href="#workshops">Мастер-классы</a>
-        <a href="#projects">Проекты</a>
-        <a href="#about">Обо&nbsp;мне</a>
+        <a href="#method">Метод</a>
+        <a href="#formats">Форматы</a>
+        <a href="#products">Продукты</a>
+        <a href="#publications">Публикации</a>
+        <a href="#reviews">Отзывы</a>
         <a href="#booking" class="nav__cta">Записаться</a>
       </div>
     </div>
   </nav>
 
-  <!-- ============ HERO (split-layout) ============ -->
+  <!-- ============ HERO ============ -->
   <section id="top" class="hero">
     <div class="hero__content reveal">
-      <div class="hero__eyebrow">
-        <span class="hero__eyebrow-dot"></span>
-        Вокальный психолог · Наставник Академии Ларисы Долиной
-      </div>
       <h1 class="hero__title">
         Свободный голос<br>
         начинается <em>внутри.</em>
       </h1>
       <p class="hero__subtitle">
-        Помогаю юным вокалистам, их родителям и педагогам убрать сценический страх, психосоматику голоса и внутренние зажимы. <strong>Не про технику&nbsp;— про то, что мешает звуку быть собой.</strong>
+        <strong>Мария Осадчая — вокальный психолог.</strong> Я не учу петь. Я работаю с тем, что мешает голосу нести чувство.
       </p>
+      <div class="hero__regalia">
+        Наставник Музыкальной академии Ларисы Долиной&nbsp;· Приглашённый эксперт форума Леонида Агутина 2021–2026&nbsp;· Соавтор проектов ДНК Артиста и Института вокальной психологии
+      </div>
+      <div class="hero__stats">
+        <span class="hero__stat"><span class="hero__stat-num">2000+</span> артистов в работе</span>
+        <span class="hero__stat-sep">·</span>
+        <span class="hero__stat"><span class="hero__stat-num">700+</span> участников онлайн</span>
+        <span class="hero__stat-sep">·</span>
+        <span class="hero__stat"><span class="hero__stat-num">100+</span> педагогов на обучении</span>
+        <span class="hero__stat-sep">·</span>
+        <span class="hero__stat"><span class="hero__stat-num">20+</span> лет на сцене</span>
+      </div>
       <div class="hero__cta-group">
         <a href="#booking" class="hero__cta">
           Записаться на консультацию
           <span style="font-size: 18px;">→</span>
         </a>
-        <a href="#problem" class="hero__cta-secondary">Это про меня?</a>
-      </div>
-      <div class="hero__scroll">
-        скролл
-        <span class="hero__scroll-line"></span>
+        <a href="#method" class="hero__cta-secondary">Как я работаю</a>
       </div>
     </div>
-    <div class="hero__image" role="img" aria-label="Мария Осадчая с юными вокалистами"></div>
-  </section>
-
-  <!-- ============ STATS + TRUST STRIP ============ -->
-  <section style="position: relative; padding: 96px 48px 80px; background: #F7F1E6;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;">
-        <div>
-          <div class="serif" style="font-size: 44px; font-weight: 500; color: #8B6B3D; line-height: 1;">20<span style="font-size: 28px;">+</span></div>
-          <div style="font-size: 13px; color: #6B5A47; margin-top: 8px; line-height: 1.4;">лет в музыке и&nbsp;психологии голоса</div>
-        </div>
-        <div>
-          <div class="serif" style="font-size: 44px; font-weight: 500; color: #8B6B3D; line-height: 1;">10–16</div>
-          <div style="font-size: 13px; color: #6B5A47; margin-top: 8px; line-height: 1.4;">основной возраст моих клиентов</div>
-        </div>
-        <div>
-          <div class="serif" style="font-size: 44px; font-weight: 500; color: #8B6B3D; line-height: 1; letter-spacing: -0.5px;">5 шоу</div>
-          <div style="font-size: 13px; color: #6B5A47; margin-top: 8px; line-height: 1.4;">«Голос. Дети», «Голос», «Большая сцена», «Ты&nbsp;супер!», «Синяя птица»&nbsp;— среди клиентов победители</div>
-        </div>
-        <div>
-          <div class="serif" style="font-size: 44px; font-weight: 500; color: #8B6B3D; line-height: 1;">5+</div>
-          <div style="font-size: 13px; color: #6B5A47; margin-top: 8px; line-height: 1.4;">команд звёзд эстрады, где я приглашённый эксперт</div>
-        </div>
-      </div>
-
-      <div style="margin-top: 56px; padding-top: 36px; border-top: 1px solid rgba(184, 147, 90, 0.2);">
-        <div style="font-size: 11px; letter-spacing: 0.22em; color: #8B6B3D; text-transform: uppercase; margin-bottom: 20px; text-align: center;">Работаю с командами и проектами</div>
-        <div style="display: flex; justify-content: space-between; align-items: center; gap: 32px; font-family: 'Cormorant Garamond', serif; color: #6B5A47; font-size: 22px; font-weight: 500; flex-wrap: wrap;">
-          <span>Лариса Долина</span>
-          <span style="opacity: 0.4;">•</span>
-          <span>Леонид Агутин</span>
-          <span style="opacity: 0.4;">•</span>
-          <span>Анита Цой</span>
-          <span style="opacity: 0.4;">•</span>
-          <span>Этери Бериашвили</span>
-          <span style="opacity: 0.4;">•</span>
-          <span>Доминик Джокер</span>
-        </div>
-      </div>
+    <div class="hero__portrait">
+      <img src="assets/maria-hero.jpg" alt="Мария Осадчая">
+      <span class="hero__portrait-tag">В работе с вокалистами</span>
     </div>
   </section>
 
@@ -875,64 +885,66 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer style="background: #2A2118; color: #B8A88E; padding: 80px 48px 36px;">
+  <footer style="background: #2A2028; color: #B8A8B0; padding: 84px 48px 36px;">
     <div style="max-width: 1320px; margin: 0 auto;">
       <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(201, 168, 118, 0.15);">
         <div>
           <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px;">
             <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #C9A876, #8B6B3D); display: flex; align-items: center; justify-content: center; color: #FFF8EC; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; font-style: italic;">М</div>
             <div>
-              <div class="serif" style="font-size: 22px; font-weight: 600; color: #F7F1E6;">Мария Осадчая</div>
-              <div style="font-size: 12px; color: #C9A876; letter-spacing: 0.18em; text-transform: uppercase;">Вокальный психолог</div>
+              <div class="display" style="font-size: 20px; font-weight: 500; color: #F7F3EE;">Мария Осадчая</div>
+              <div style="font-size: 12px; color: #C9A876; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 3px;">Вокальный психолог</div>
             </div>
           </div>
-          <p style="font-size: 14px; line-height: 1.6; max-width: 380px; margin: 0 0 24px;">Институт вокальной психологии и проект «ДНК Артиста» — пространства, где голос обретает свободу, а артист — себя.</p>
+          <p style="font-size: 14px; line-height: 1.65; max-width: 380px; margin: 0 0 20px; color: #B8A8B0;">Я не учу петь&nbsp;— я работаю с тем, что мешает голосу нести чувство. Соавтор проектов ДНК&nbsp;Артиста и Института вокальной психологии, наставник Академии Ларисы Долиной.</p>
           <div style="display: flex; gap: 12px;">
-            <a href="#" aria-label="Telegram" style="width: 42px; height: 42px; border-radius: 50%; background: rgba(201, 168, 118, 0.12); display: flex; align-items: center; justify-content: center; color: #C9A876; transition: all 0.2s;" style-hover="{ background: '#C9A876', color: '#2A2118' }">
+            <a href="#" aria-label="Telegram" style="width: 42px; height: 42px; border-radius: 50%; background: rgba(201, 168, 118, 0.12); display: flex; align-items: center; justify-content: center; color: #C9A876; transition: all 0.2s;" style-hover="{ background: '#C9A876', color: '#2A2028' }">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
             </a>
-            <a href="#" aria-label="VK" style="width: 42px; height: 42px; border-radius: 50%; background: rgba(201, 168, 118, 0.12); display: flex; align-items: center; justify-content: center; color: #C9A876; transition: all 0.2s;" style-hover="{ background: '#C9A876', color: '#2A2118' }">
+            <a href="#" aria-label="VK" style="width: 42px; height: 42px; border-radius: 50%; background: rgba(201, 168, 118, 0.12); display: flex; align-items: center; justify-content: center; color: #C9A876; transition: all 0.2s;" style-hover="{ background: '#C9A876', color: '#2A2028' }">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.435-.193c.135-.148.131-.425.131-.425s-.019-1.302.584-1.495c.594-.19 1.357 1.265 2.165 1.825.611.422 1.076.33 1.076.33l2.161-.03s1.131-.07.594-.964c-.044-.073-.313-.661-1.61-1.866-1.357-1.262-1.175-1.057.461-3.24.996-1.327 1.394-2.137 1.27-2.482-.119-.328-.846-.241-.846-.241l-2.43.015s-.18-.025-.314.056c-.13.078-.214.262-.214.262s-.385 1.026-.898 1.898c-1.083 1.838-1.516 1.935-1.693 1.821-.412-.267-.309-1.072-.309-1.643 0-1.785.27-2.529-.527-2.722-.265-.064-.46-.107-1.137-.114-.869-.009-1.604.003-2.02.207-.277.135-.491.437-.36.454.16.022.523.099.715.36.249.34.24 1.1.24 1.1s.143 2.092-.334 2.353c-.327.18-.776-.187-1.741-1.857-.495-.855-.868-1.8-.868-1.8s-.072-.176-.2-.27c-.155-.114-.371-.15-.371-.15l-2.31.014s-.347.01-.474.16c-.114.135-.01.412-.01.412s1.81 4.232 3.858 6.366c1.88 1.957 4.014 1.828 4.014 1.828h.965z"/></svg>
             </a>
-            <a href="#" aria-label="YouTube" style="width: 42px; height: 42px; border-radius: 50%; background: rgba(201, 168, 118, 0.12); display: flex; align-items: center; justify-content: center; color: #C9A876; transition: all 0.2s;" style-hover="{ background: '#C9A876', color: '#2A2118' }">
+            <a href="#" aria-label="YouTube" style="width: 42px; height: 42px; border-radius: 50%; background: rgba(201, 168, 118, 0.12); display: flex; align-items: center; justify-content: center; color: #C9A876; transition: all 0.2s;" style-hover="{ background: '#C9A876', color: '#2A2028' }">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 7.186c-.23-.86-.908-1.538-1.768-1.768C18.254 5 12 5 12 5s-6.254 0-7.814.418c-.86.23-1.538.908-1.768 1.768C2 8.746 2 12 2 12s0 3.254.418 4.814c.23.86.908 1.538 1.768 1.768C5.746 19 12 19 12 19s6.254 0 7.814-.418c.86-.23 1.538-.908 1.768-1.768C22 15.254 22 12 22 12s0-3.254-.418-4.814zM10 15V9l5.196 3L10 15z"/></svg>
             </a>
           </div>
         </div>
         <div>
-          <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A876; margin-bottom: 22px;">Навигация</div>
+          <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A876; margin-bottom: 22px;">Разделы</div>
           <div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
-            <a href="#problem" style="transition: color 0.2s;" style-hover="{ color: '#FFF8EC' }">В чём проблема</a>
-            <a href="#services" style="transition: color 0.2s;" style-hover="{ color: '#FFF8EC' }">Услуги</a>
-            <a href="#workshops" style="transition: color 0.2s;" style-hover="{ color: '#FFF8EC' }">Мастер-классы</a>
-            <a href="#about" style="transition: color 0.2s;" style-hover="{ color: '#FFF8EC' }">Обо мне</a>
-            <a href="#booking" style="transition: color 0.2s;" style-hover="{ color: '#FFF8EC' }">Записаться</a>
+            <a href="#method" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Метод</a>
+            <a href="#formats" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Форматы</a>
+            <a href="#products" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Продукты</a>
+            <a href="#publications" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Публикации</a>
+            <a href="#reviews" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Отзывы</a>
+            <a href="#booking" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Записаться</a>
           </div>
         </div>
         <div>
           <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A876; margin-bottom: 22px;">Проекты</div>
           <div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
-            <a href="https://dna-artist-new2.vercel.app" target="_blank" rel="noopener" style="transition: color 0.2s;" style-hover="{ color: '#FFF8EC' }">«ДНК Артиста»</a>
-            <a href="https://ivp-theta.vercel.app" target="_blank" rel="noopener" style="transition: color 0.2s;" style-hover="{ color: '#FFF8EC' }">Институт вокальной психологии</a>
-            <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#FFF8EC' }">Telegram-канал</a>
-            <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#FFF8EC' }">YouTube-лекторий</a>
+            <a href="https://dna-artist-new2.vercel.app" target="_blank" rel="noopener" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">«ДНК&nbsp;Артиста»</a>
+            <a href="https://ivp-theta.vercel.app" target="_blank" rel="noopener" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Институт вокальной психологии</a>
+            <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Telegram-канал</a>
+            <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">YouTube</a>
+            <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">ВКонтакте</a>
           </div>
         </div>
         <div>
           <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A876; margin-bottom: 22px;">Контакты</div>
           <div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
-            <a href="mailto:hello@osadchaya.ru" style="color: #F7F1E6;">hello@osadchaya.ru</a>
-            <a href="tel:+79000000000" style="color: #F7F1E6;">+7 (900) 000-00-00</a>
+            <a href="mailto:hello@osadchaya.ru" style="color: #F7F3EE;">hello@osadchaya.ru</a>
+            <a href="tel:+79000000000" style="color: #F7F3EE;">+7 (900) 000-00-00</a>
             <span>Москва · онлайн по всему миру</span>
           </div>
         </div>
       </div>
-      <div style="padding-top: 30px; display: flex; justify-content: space-between; gap: 24px; font-size: 12px; color: #7A6A55; flex-wrap: wrap;">
+      <div style="padding-top: 30px; display: flex; justify-content: space-between; gap: 24px; font-size: 12px; color: #7A6A70; flex-wrap: wrap;">
         <div>© 2026 Мария Осадчая. Все права защищены.</div>
         <div style="display: flex; gap: 22px;">
-          <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#F7F1E6' }">Договор оферты</a>
-          <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#F7F1E6' }">Политика конфиденциальности</a>
-          <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#F7F1E6' }">Реквизиты</a>
+          <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Договор оферты</a>
+          <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Политика конфиденциальности</a>
+          <a href="#" style="transition: color 0.2s;" style-hover="{ color: '#F7F3EE' }">Реквизиты</a>
         </div>
       </div>
     </div>
