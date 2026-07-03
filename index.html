@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Мария Осадчая — вокальный психолог</title>
 <meta name="description" content="Мария Осадчая — вокальный психолог, наставник Академии Ларисы Долиной. Убираю сценический страх, психосоматику голоса и внутренние зажимы у юных вокалистов.">
+<link rel="canonical" href="https://maryos.vercel.app/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#F7F1E6">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maryos.vercel.app/">
+<meta property="og:title" content="Мария Осадчая — вокальный психолог">
+<meta property="og:description" content="Работаю со сценическим страхом, психосоматикой голоса и внутренними зажимами. Наставник Академии Ларисы Долиной.">
+<meta property="og:image" content="https://maryos.vercel.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Мария Осадчая">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Мария Осадчая — вокальный психолог">
+<meta name="twitter:description" content="Работаю со сценическим страхом, психосоматикой голоса и внутренними зажимами. Наставник Академии Ларисы Долиной.">
+<meta name="twitter:image" content="https://maryos.vercel.app/assets/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://maryos.vercel.app/#person",
+      "name": "Мария Осадчая",
+      "jobTitle": "Вокальный психолог",
+      "url": "https://maryos.vercel.app/",
+      "image": "https://maryos.vercel.app/assets/maria-hero.jpg",
+      "email": "mariya.osadchaya18@mail.ru",
+      "telephone": "+7-918-662-36-14",
+      "sameAs": [
+        "https://t.me/+5zpVaCHj5Zg5NTgy",
+        "https://vk.ru/club237353143",
+        "https://youtube.com/channel/UCYDgiR6EZ0540WANYf_lvdw"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Ростовская государственная консерватория им. С. В. Рахманинова"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Музыкальная академия Ларисы Долиной"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://maryos.vercel.app/#service",
+      "name": "Вокальная психология Марии Осадчей",
+      "description": "Индивидуальные сессии и длительное сопровождение подростков-вокалистов, взрослых артистов и вокальных педагогов. Работа со страхом сцены, психосоматикой голоса, аутентичным звучанием.",
+      "url": "https://maryos.vercel.app/",
+      "image": "https://maryos.vercel.app/assets/og-image.jpg",
+      "provider": { "@id": "https://maryos.vercel.app/#person" },
+      "areaServed": "Онлайн, весь мир",
+      "priceRange": "2900-7000 ₽"
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://maryos.vercel.app/",
+      "name": "Мария Осадчая",
+      "inLanguage": "ru-RU"
+    }
+  ]
+}
+</script>
 <script src="./vendor/react.production.min.js"></script>
 <script src="./vendor/react-dom.production.min.js"></script>
 <script src="./support.js"></script>
@@ -318,7 +381,10 @@
       </div>
     </div>
     <div class="hero__portrait">
-      <img src="assets/maria-hero.jpg" alt="Мария Осадчая">
+      <picture>
+        <source type="image/webp" srcset="assets/maria-hero-960.webp 960w, assets/maria-hero.webp 1600w" sizes="(max-width: 960px) 340px, 480px">
+        <img src="assets/maria-hero-960.jpg" srcset="assets/maria-hero-960.jpg 960w, assets/maria-hero.jpg 1600w" sizes="(max-width: 960px) 340px, 480px" alt="Мария Осадчая — вокальный психолог, портрет" loading="eager" fetchpriority="high" decoding="async">
+      </picture>
       <div class="hero__portrait-plate">
         <strong>Вокальный психолог Мария Осадчая</strong>,<br>
         автор направления <em>вокальной&nbsp;психологии</em>.
