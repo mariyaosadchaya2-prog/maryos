@@ -1274,37 +1274,23 @@ class Component extends DCLogic {
       setTimeout(function(){ mo.disconnect(); }, 8000);
     }
 
-    function bindReviewsTabs(root){
-      var tabs = root.querySelectorAll('.reviews__tab');
-      var panels = root.querySelectorAll('.reviews__panel');
-      if (!tabs.length || !panels.length) return false;
-      tabs.forEach(function(tab){
-        tab.addEventListener('click', function(){
-          var name = tab.getAttribute('data-tab');
-          tabs.forEach(function(t){
-            var active = t === tab;
-            t.classList.toggle('reviews__tab--active', active);
-            t.style.background = active ? 'var(--text)' : 'transparent';
-            t.style.color = active ? '#F7F3EE' : 'var(--text)';
-          });
-          panels.forEach(function(p){
-            p.style.display = (p.getAttribute('data-panel') === name) ? 'grid' : 'none';
-          });
-        });
+    // Event delegation on document — survives DC-runtime re-renders.
+    document.addEventListener('click', function(ev){
+      var tab = ev.target.closest && ev.target.closest('.reviews__tab');
+      if (!tab) return;
+      var section = tab.closest('#reviews');
+      if (!section) return;
+      var name = tab.getAttribute('data-tab');
+      section.querySelectorAll('.reviews__tab').forEach(function(t){
+        var active = t.getAttribute('data-tab') === name;
+        t.classList.toggle('reviews__tab--active', active);
+        t.style.background = active ? 'var(--text)' : 'transparent';
+        t.style.color = active ? '#F7F3EE' : 'var(--text)';
       });
-      return true;
-    }
-    function tryTabs(){
-      var sec = document.getElementById('reviews');
-      return sec ? bindReviewsTabs(sec) : false;
-    }
-    if (!tryTabs()) {
-      var mo2 = new MutationObserver(function(){
-        if (tryTabs()) mo2.disconnect();
+      section.querySelectorAll('.reviews__panel').forEach(function(p){
+        p.style.display = (p.getAttribute('data-panel') === name) ? 'grid' : 'none';
       });
-      mo2.observe(document.body, { childList: true, subtree: true });
-      setTimeout(function(){ mo2.disconnect(); }, 8000);
-    }
+    });
   })();
 </script>
 </body>
