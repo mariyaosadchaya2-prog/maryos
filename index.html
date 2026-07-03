@@ -853,13 +853,13 @@
 
       <!-- Tabs -->
       <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 48px; flex-wrap: wrap;">
-        <button class="reviews__tab reviews__tab--active" data-tab="parents" style="border: 1px solid var(--border); background: var(--text); color: #F7F3EE; padding: 12px 26px; border-radius: 999px; font-family: inherit; font-size: 13px; letter-spacing: 0.02em; cursor: pointer; transition: background 0.25s, color 0.25s;">Родители</button>
-        <button class="reviews__tab" data-tab="artists" style="border: 1px solid var(--border); background: transparent; color: var(--text); padding: 12px 26px; border-radius: 999px; font-family: inherit; font-size: 13px; letter-spacing: 0.02em; cursor: pointer; transition: background 0.25s, color 0.25s;">Артисты</button>
+        <button class="reviews__tab reviews__tab--active" data-tab="artists" style="border: 1px solid var(--border); background: var(--text); color: #F7F3EE; padding: 12px 26px; border-radius: 999px; font-family: inherit; font-size: 13px; letter-spacing: 0.02em; cursor: pointer; transition: background 0.25s, color 0.25s;">Артисты</button>
         <button class="reviews__tab" data-tab="teachers" style="border: 1px solid var(--border); background: transparent; color: var(--text); padding: 12px 26px; border-radius: 999px; font-family: inherit; font-size: 13px; letter-spacing: 0.02em; cursor: pointer; transition: background 0.25s, color 0.25s;">Педагоги</button>
+        <button class="reviews__tab" data-tab="parents" style="border: 1px solid var(--border); background: transparent; color: var(--text); padding: 12px 26px; border-radius: 999px; font-family: inherit; font-size: 13px; letter-spacing: 0.02em; cursor: pointer; transition: background 0.25s, color 0.25s;">Родители</button>
       </div>
 
       <!-- Panel: Parents (обезличенно) -->
-      <div class="reviews__panel" data-panel="parents" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;">
+      <div class="reviews__panel" data-panel="parents" style="display: none; grid-template-columns: repeat(3, 1fr); gap: 22px;">
         <!-- TODO: заменить на реальные обезличенные отзывы, собранные с разрешения родителей. -->
         <article style="background: var(--bg-cream-card); border-radius: 22px; padding: 32px 30px; border: 1px solid var(--border-soft); display: flex; flex-direction: column;">
           <div class="serif" style="font-size: 44px; line-height: 0.6; color: var(--accent-soft); font-style: italic; height: 18px;">“</div>
@@ -888,30 +888,29 @@
       </div>
 
       <!-- Panel: Artists -->
-      <div class="reviews__panel" data-panel="artists" style="display: none; grid-template-columns: repeat(3, 1fr); gap: 22px;">
-        <!-- TODO: заменить на реальные тексты отзывов Гарика, Ани, Насти с их разрешения. -->
+      <div class="reviews__panel" data-panel="artists" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;">
         <article style="background: var(--bg-cream-card); border-radius: 22px; padding: 32px 30px; border: 1px solid var(--border-soft); display: flex; flex-direction: column;">
           <div class="serif" style="font-size: 44px; line-height: 0.6; color: var(--accent-soft); font-style: italic; height: 18px;">“</div>
-          <p class="serif" style="font-family: var(--font-italic); font-style: italic; font-size: 17px; line-height: 1.45; color: var(--text); margin: 20px 0 24px;">С Марией я разобрал не технику — а то, что мешало мне звучать своим. Это оказалось важнее любого мастер-класса.</p>
+          <p class="serif" style="font-family: var(--font-italic); font-style: italic; font-size: 17px; line-height: 1.5; color: var(--text); margin: 20px 0 24px;">Мария очень чётко даёт понять в моменте, что твоя проблема не такая глубинная, как ты себе её рисуешь. Помогает избавляться от страха.</p>
           <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-soft); font-size: 13px; color: var(--text-soft);">
             <div style="font-weight: 500; color: var(--text);">Гарик Зебелян</div>
-            <div style="margin-top: 3px; font-size: 12px; color: var(--text-mute);">Певец, участник команды Ларисы Долиной</div>
+            <div style="margin-top: 3px; font-size: 12px; color: var(--text-mute);">Певец, автор песен · финалист «Ну-ка, все вместе!» · выпускник Академии Ларисы Долиной</div>
           </div>
         </article>
         <article style="background: var(--bg-cream-card); border-radius: 22px; padding: 32px 30px; border: 1px solid var(--border-soft); display: flex; flex-direction: column;">
           <div class="serif" style="font-size: 44px; line-height: 0.6; color: var(--accent-soft); font-style: italic; height: 18px;">“</div>
-          <p class="serif" style="font-family: var(--font-italic); font-style: italic; font-size: 17px; line-height: 1.45; color: var(--text); margin: 20px 0 24px;">Я перестала пытаться звучать «как надо» и стала звучать собой. Свои песни зазвучали по-другому — даже мне.</p>
+          <p class="serif" style="font-family: var(--font-italic); font-style: italic; font-size: 17px; line-height: 1.5; color: var(--text); margin: 20px 0 24px;">Мне безумно помогла медитация, которую создала Мария, чтобы не переживать перед выступлением. Её поддержка сказалась не только на творческой деятельности, но и в целом на жизни.</p>
           <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-soft); font-size: 13px; color: var(--text-soft);">
-            <div style="font-weight: 500; color: var(--text);">Ани Галстян</div>
-            <div style="margin-top: 3px; font-size: 12px; color: var(--text-mute);">Вокалистка, автор-исполнитель</div>
+            <div style="font-weight: 500; color: var(--text);">Ани Галстян (ANI)</div>
+            <div style="margin-top: 3px; font-size: 12px; color: var(--text-mute);">Исполнитель, автор песен · 100K+ подписчиков · Алые Паруса 2025, Газпром Арена</div>
           </div>
         </article>
         <article style="background: var(--bg-cream-card); border-radius: 22px; padding: 32px 30px; border: 1px solid var(--border-soft); display: flex; flex-direction: column;">
           <div class="serif" style="font-size: 44px; line-height: 0.6; color: var(--accent-soft); font-style: italic; height: 18px;">“</div>
-          <p class="serif" style="font-family: var(--font-italic); font-style: italic; font-size: 17px; line-height: 1.45; color: var(--text); margin: 20px 0 24px;">Работа с Марией сняла то, что тянуло меня назад на сцене — страх «недостоинства». Без него я и звучу, и живу иначе.</p>
+          <p class="serif" style="font-family: var(--font-italic); font-style: italic; font-size: 17px; line-height: 1.5; color: var(--text); margin: 20px 0 24px;">Сессии с Марией — это всегда уголок спокойствия и безопасности. Я, наверное, ни с кем так свободно не говорю о своих мыслях и чувствах.</p>
           <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-soft); font-size: 13px; color: var(--text-soft);">
-            <div style="font-weight: 500; color: var(--text);">Настя Смыкова</div>
-            <div style="margin-top: 3px; font-size: 12px; color: var(--text-mute);">Вокалистка, участница телепроектов</div>
+            <div style="font-weight: 500; color: var(--text);">Айкануш Аветисян</div>
+            <div style="margin-top: 3px; font-size: 12px; color: var(--text-mute);">Хип-хоп артистка · выпускница Академии Ларисы Долиной · «Таврида АРТ»</div>
           </div>
         </article>
       </div>
