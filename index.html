@@ -336,6 +336,103 @@
     .hero__content { padding-right: 0; order: 2; }
     .hero__portrait { order: 1; max-width: 340px; aspect-ratio: 4 / 5; }
     .hero__title { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+
+    /* MOBILE: collapse ALL multi-column grids to 1 column */
+    section [style*="grid-template-columns: repeat(3"],
+    section [style*="grid-template-columns: repeat(4"],
+    section [style*="grid-template-columns: repeat(5"],
+    section [style*="grid-template-columns: repeat(6"],
+    section [style*="grid-template-columns: 1fr 1fr"],
+    section [style*="grid-template-columns: 1.05fr 1fr"],
+    section [style*="grid-template-columns: 1.1fr 1fr"],
+    section [style*="grid-template-columns: 0.9fr 1fr"],
+    section [style*="grid-template-columns: 1fr 1.1fr"] {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+    section [style*="grid-column: span"] {
+      grid-column: auto !important;
+    }
+    section [style*="grid-template-columns: 320px minmax"] {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+
+    /* Section padding — squash horizontal, keep vertical breathing */
+    section[style*="padding: 140px"],
+    section[style*="padding: 120px"] {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      padding-top: 72px !important;
+      padding-bottom: 72px !important;
+    }
+
+    /* Booking dark panel: 2-col → 1-col + reduce padding */
+    #booking > div > div {
+      padding: 40px 24px !important;
+      border-radius: 22px !important;
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+    }
+    #booking h2 { font-size: clamp(1.8rem, 6vw, 2.4rem) !important; }
+
+    /* Footer: 4-col → 1-col */
+    footer > div > div[style*="grid-template-columns: 2fr 1fr 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+      gap: 36px !important;
+    }
+    footer[style*="padding: 84px 48px"] {
+      padding: 56px 24px 30px !important;
+    }
+
+    /* Big display H2 across pages — cap size on mobile */
+    section h2[class*="display"],
+    section h2.section__title {
+      font-size: clamp(1.7rem, 6vw, 2.3rem) !important;
+    }
+
+    /* Pyramid section on method — tighten */
+    section [style*="max-width: 640px"] > div[style*="padding: 40px 30px"] {
+      padding: 24px 16px !important;
+    }
+
+    /* Reviews tabs wrap comfortably */
+    #reviews > div > div[style*="justify-content: center"] {
+      gap: 8px !important;
+    }
+    .reviews__tab {
+      padding: 10px 16px !important;
+      font-size: 12px !important;
+    }
+
+    /* Publications book covers — center thumb + text stacks */
+    #publications article[style*="align-items: center"] {
+      flex-direction: column !important;
+      text-align: center;
+      gap: 16px !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    /* Even tighter */
+    .hero { padding: 90px 16px 40px !important; }
+    .hero__title { font-size: 1.85rem !important; }
+    .hero__regalia { font-size: 12px !important; padding: 14px 16px !important; }
+    .stats-band { padding: 32px 16px !important; }
+
+    section[style*="padding: 140px"],
+    section[style*="padding: 120px"] {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+      padding-top: 60px !important;
+      padding-bottom: 60px !important;
+    }
+    footer[style*="padding: 84px 48px"] {
+      padding: 48px 16px 24px !important;
+    }
+    footer > div > div[style*="grid-template-columns: 2fr 1fr 1fr 1fr"] {
+      padding-bottom: 40px !important;
+    }
   }
 </style>
 </helmet>
@@ -1225,9 +1322,9 @@
             <option style="color: var(--text);">Пока не знаю, нужна помощь</option>
           </select>
           <textarea placeholder="Коротко о запросе" rows="4" style="padding: 18px 22px; border-radius: 14px; border: 1px solid rgba(201, 168, 118, 0.28); background: rgba(247, 243, 238, 0.06); color: #F7F3EE; font-size: 14.5px; font-family: inherit; outline: none; resize: none;" style-focus="{ borderColor: 'var(--accent-soft)' }"></textarea>
-          <button type="button" style="background: var(--accent-soft); color: var(--text); padding: 20px; border: none; border-radius: 14px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: inherit; letter-spacing: 0.02em; margin-top: 6px;" style-hover="{ background: '#F7F3EE' }">
-            Отправить
-          </button>
+          <a href="https://vk.ru/club237353143" target="_blank" rel="noopener" style="display: block; text-align: center; background: var(--accent-soft); color: var(--text); padding: 20px; border: none; border-radius: 14px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: inherit; letter-spacing: 0.02em; margin-top: 6px; text-decoration: none;">
+            Записаться через ВКонтакте&nbsp;→
+          </a>
           <p style="font-size: 11.5px; color: rgba(247, 243, 238, 0.55); text-align: center; margin: 4px 0 0; line-height: 1.5;">Нажимая кнопку, вы соглашаетесь с <a href="#" style="text-decoration: underline; color: var(--accent-soft);">политикой обработки данных</a></p>
         </form>
       </div>
