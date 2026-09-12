@@ -198,5 +198,30 @@
       onScroll();
     })();
   </script>
+
+  <!-- Cookie notice — простая полоса. При подключении аналитики (напр. Яндекс.Метрика) заменить на баннер с кнопками «Принять» / «Отклонить», а скрипты аналитики подключать только после нажатия «Принять». -->
+  <div id="cookie-notice" class="cookie-notice" hidden>
+    <div class="cookie-notice__inner">
+      <p>Сайт использует файлы cookie, необходимые для его работы. Продолжая использование сайта, вы соглашаетесь с этим. Подробнее — в <a href="/privacy.html">Политике обработки персональных данных</a>.</p>
+      <button type="button" id="cookie-notice-btn" class="cookie-notice__btn">Понятно</button>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var KEY = 'cookieNoticeAccepted';
+      var el = document.getElementById('cookie-notice');
+      if (!el) return;
+      var accepted = false;
+      try { accepted = localStorage.getItem(KEY) === '1'; } catch (e) {}
+      if (accepted) return;
+      el.hidden = false;
+      var btn = document.getElementById('cookie-notice-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function(){
+        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+        el.hidden = true;
+      });
+    })();
+  </script>
 </body>
 </html>

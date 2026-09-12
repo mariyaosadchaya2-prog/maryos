@@ -316,3 +316,59 @@ a { color: inherit; text-decoration: none; }
   .legal h3 { font-size: 16px; margin-top: 26px; }
   .legal table td:first-child { width: 38%; }
 }
+
+/* ============ COOKIE NOTICE ============ */
+/* Простая полоса. Если появится Яндекс.Метрика или иная аналитика,
+   заменить на баннер с кнопками «Принять»/«Отклонить», а скрипты
+   аналитики подключать только после нажатия «Принять». */
+.cookie-notice {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 200;
+  background: #FFF8EC;
+  color: var(--text);
+  border: 1px solid rgba(201, 168, 118, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(42, 32, 40, 0.14);
+  padding: 14px 18px;
+}
+.cookie-notice__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.cookie-notice p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text);
+  flex: 1 1 320px;
+}
+.cookie-notice a { color: var(--accent-deep); border-bottom: 1px solid var(--accent-deep); }
+.cookie-notice a:hover { color: var(--text); border-bottom-color: var(--text); }
+.cookie-notice__btn {
+  appearance: none;
+  border: 0;
+  background: var(--accent-deep);
+  color: #FFF8EC;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 9px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+.cookie-notice__btn:hover { background: #6E5230; }
+@media (max-width: 640px) {
+  .cookie-notice { left: 10px; right: 10px; bottom: 10px; padding: 12px 14px; }
+  .cookie-notice p { font-size: 12.5px; flex: 1 1 100%; }
+  .cookie-notice__btn { width: 100%; }
+}
