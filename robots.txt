@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://maryos.vercel.app/sitemap.xml
+Sitemap: https://maryos.ru/sitemap.xml
