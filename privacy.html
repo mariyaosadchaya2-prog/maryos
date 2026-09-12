@@ -36,7 +36,8 @@
           <div class="nav__logo-role">вокальный психолог</div>
         </div>
       </a>
-      <div class="nav__links">
+      <button class="nav__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-menu"><span></span></button>
+      <div class="nav__links" id="nav-menu">
         <a href="method.html">Метод</a>
         <a href="formats.html">Форматы</a>
         <a href="products.html">Продукты</a>
@@ -257,6 +258,31 @@
       var onScroll = function(){ if (window.scrollY > 40) nav.classList.add('nav--scrolled'); else nav.classList.remove('nav--scrolled'); };
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+
+      var burger = nav.querySelector('.nav__burger');
+      var menu = nav.querySelector('.nav__links');
+      if (burger && menu) {
+        var close = function(){ nav.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); };
+        var open  = function(){ nav.classList.add('is-open'); burger.setAttribute('aria-expanded', 'true'); };
+        burger.addEventListener('click', function(){
+          if (nav.classList.contains('is-open')) close(); else open();
+        });
+        // Close after tapping any link inside drawer
+        menu.addEventListener('click', function(ev){
+          var t = ev.target;
+          while (t && t !== menu) { if (t.tagName === 'A') { close(); break; } t = t.parentNode; }
+        });
+        // Close on outside click
+        document.addEventListener('click', function(ev){
+          if (!nav.classList.contains('is-open')) return;
+          if (nav.contains(ev.target)) return;
+          close();
+        });
+        // Close on Esc
+        document.addEventListener('keydown', function(ev){
+          if (ev.key === 'Escape') close();
+        });
+      }
     })();
   </script>
 

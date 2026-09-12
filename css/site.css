@@ -76,6 +76,30 @@ a { color: inherit; text-decoration: none; }
   border-color: transparent;
   box-shadow: 0 1px 0 var(--border-soft);
 }
+.nav__burger {
+  display: none;
+  appearance: none; border: 0; background: transparent;
+  width: 40px; height: 40px; padding: 0; cursor: pointer;
+  position: relative; color: var(--text);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+.nav__burger:hover { background: rgba(139, 107, 61, 0.08); }
+.nav__burger::before,
+.nav__burger::after,
+.nav__burger > span {
+  content: '';
+  position: absolute; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 2px; background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.28s ease, opacity 0.18s ease, top 0.28s ease;
+}
+.nav__burger::before { top: 13px; }
+.nav__burger > span   { top: 19px; }
+.nav__burger::after  { top: 25px; }
+.nav.is-open .nav__burger::before { top: 19px; transform: translateX(-50%) rotate(45deg); }
+.nav.is-open .nav__burger > span   { opacity: 0; }
+.nav.is-open .nav__burger::after  { top: 19px; transform: translateX(-50%) rotate(-45deg); }
 
 /* Page hero for inner pages */
 .page-hero {
@@ -184,49 +208,46 @@ a { color: inherit; text-decoration: none; }
 .btn--link:hover { background: none; transform: none; box-shadow: none; color: var(--accent-deep) !important; border-color: var(--accent-deep); }
 
 @media (max-width: 960px) {
-  /* Nav on mobile: keep every link visible and tappable.
-     Row 1 — logo + «Записаться». Row 2 — Метод/Форматы/Продукты/Публикации/Отзывы, centred. */
-  .nav {
-    height: auto;
-    padding: 8px 0;
-    border-radius: 26px;
-  }
-  .nav__inner {
-    flex-wrap: wrap;
-    row-gap: 6px;
-    padding: 0 14px;
-    gap: 6px 10px;
-  }
-  .nav__logo-role { display: none; }
+  /* Nav on mobile: burger opens a dropdown with all sections. */
+  .nav__inner { padding: 0 14px; }
+  .nav__burger { display: inline-flex; }
+  .nav__logo-role { display: block; }
   .nav__links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    order: 3;
-    width: 100%;
-    gap: 4px 14px;
-    padding-top: 6px;
-    border-top: 1px solid rgba(139, 107, 61, 0.14);
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 16px 18px 18px;
+    background: rgba(255, 251, 244, 0.98);
+    backdrop-filter: blur(18px) saturate(1.1);
+    -webkit-backdrop-filter: blur(18px) saturate(1.1);
+    border: 1px solid rgba(139, 107, 61, 0.16);
+    border-radius: 22px;
+    box-shadow: 0 12px 36px -14px rgba(74, 60, 38, 0.22);
   }
+  .nav.is-open .nav__links { display: flex; }
   .nav__links a {
-    font-size: 12.5px;
-    padding: 6px 4px;
-    letter-spacing: 0.01em;
+    font-size: 15.5px;
+    color: var(--text);
+    padding: 12px 14px;
+    border-radius: 12px;
+    letter-spacing: 0;
   }
+  .nav__links a:active,
+  .nav__links a:hover { background: rgba(139, 107, 61, 0.08); color: var(--accent-deep); }
   .nav__cta {
-    padding: 6px 14px !important;
-    font-size: 11.5px !important;
-  }
-  .nav--scrolled {
-    top: 0;
-    width: 100%;
-    height: auto;
-    border-radius: 0;
+    text-align: center;
+    margin-top: 6px;
+    padding: 13px 18px !important;
+    font-size: 13.5px !important;
   }
   .container, .section, .page-hero { padding-left: 20px !important; padding-right: 20px !important; }
   .section { padding-top: 72px !important; padding-bottom: 72px !important; }
-  .page-hero { padding-top: 148px !important; padding-bottom: 48px !important; }
+  .page-hero { padding-top: 120px !important; padding-bottom: 48px !important; }
 
   /* Collapse all multi-column grids inline-styled or classed */
   .section [style*="grid-template-columns: repeat(2"],
@@ -278,7 +299,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 640px) {
   .container, .section, .page-hero { padding-left: 16px !important; padding-right: 16px !important; }
   .section { padding-top: 60px !important; padding-bottom: 60px !important; }
-  .page-hero { padding-top: 136px !important; padding-bottom: 40px !important; }
+  .page-hero { padding-top: 110px !important; padding-bottom: 40px !important; }
   .page-hero__title { font-size: 1.85rem !important; }
   .page-hero__lead { font-size: 15px !important; }
   .card { padding: 24px 18px !important; }
