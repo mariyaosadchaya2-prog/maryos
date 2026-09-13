@@ -156,6 +156,58 @@
     border-color: transparent;
     box-shadow: 0 1px 0 var(--border-soft);
   }
+  .nav__burger {
+    display: none;
+    appearance: none; border: 0; background: transparent;
+    width: 40px; height: 40px; padding: 0; cursor: pointer;
+    position: relative; color: var(--text);
+    border-radius: 999px;
+    transition: background 0.2s ease;
+  }
+  .nav__burger:hover { background: rgba(139, 107, 61, 0.08); }
+  .nav__burger::before,
+  .nav__burger::after,
+  .nav__burger > span {
+    content: '';
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 20px; height: 2px; background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.28s ease, opacity 0.18s ease, top 0.28s ease;
+  }
+  .nav__burger::before { top: 13px; }
+  .nav__burger > span   { top: 19px; }
+  .nav__burger::after  { top: 25px; }
+  .nav.is-open .nav__burger::before { top: 19px; transform: translateX(-50%) rotate(45deg); }
+  .nav.is-open .nav__burger > span   { opacity: 0; }
+  .nav.is-open .nav__burger::after  { top: 19px; transform: translateX(-50%) rotate(-45deg); }
+
+  /* ============ COOKIE NOTICE ============ */
+  .cookie-notice {
+    position: fixed;
+    left: 16px; right: 16px; bottom: 16px;
+    z-index: 200;
+    background: #FFF8EC;
+    color: var(--text);
+    border: 1px solid rgba(201, 168, 118, 0.35);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(42, 32, 40, 0.14);
+    padding: 14px 18px;
+  }
+  .cookie-notice__inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .cookie-notice p { margin: 0; font-size: 13px; line-height: 1.55; color: var(--text); flex: 1 1 320px; }
+  .cookie-notice a { color: var(--accent-deep); border-bottom: 1px solid var(--accent-deep); }
+  .cookie-notice a:hover { color: var(--text); border-bottom-color: var(--text); }
+  .cookie-notice__btn {
+    appearance: none; border: 0;
+    background: var(--accent-deep); color: #FFF8EC;
+    font-family: inherit; font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+    padding: 9px 22px; border-radius: 999px; cursor: pointer;
+    transition: background 0.2s ease; white-space: nowrap;
+  }
+  .cookie-notice__btn:hover { background: #6E5230; }
 
   /* ============ HERO (light, split) ============ */
   .hero {
@@ -325,9 +377,49 @@
   }
 
   @media (max-width: 960px) {
-    .nav__links { display: none; }
-    .nav__inner { padding: 0 18px; }
-    .nav__logo-role { display: none; }
+    /* Mobile nav: burger opens a dropdown with all sections. */
+    .nav__inner { padding: 0 14px; }
+    .nav__burger { display: inline-flex; }
+    .nav__logo-role { display: block; }
+    .nav__links {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      padding: 16px 18px 18px;
+      background: rgba(255, 251, 244, 0.98);
+      backdrop-filter: blur(18px) saturate(1.1);
+      -webkit-backdrop-filter: blur(18px) saturate(1.1);
+      border: 1px solid rgba(139, 107, 61, 0.16);
+      border-radius: 22px;
+      box-shadow: 0 12px 36px -14px rgba(74, 60, 38, 0.22);
+    }
+    .nav.is-open .nav__links { display: flex; }
+    .nav__links a {
+      font-size: 15.5px;
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 12px;
+      letter-spacing: 0;
+    }
+    .nav__links a:active,
+    .nav__links a:hover { background: rgba(139, 107, 61, 0.08); color: var(--accent-deep); }
+    .nav__cta {
+      text-align: center;
+      margin-top: 6px;
+      padding: 13px 18px !important;
+      font-size: 13.5px !important;
+    }
+    .nav--scrolled {
+      top: 0; width: 100%; height: auto; border-radius: 0;
+    }
+    .cookie-notice { left: 10px; right: 10px; bottom: 10px; padding: 12px 14px; }
+    .cookie-notice p { font-size: 12.5px; flex: 1 1 100%; }
+    .cookie-notice__btn { width: 100%; }
     .hero {
       grid-template-columns: 1fr;
       padding: 110px 24px 60px;
