@@ -1579,28 +1579,39 @@ class Component extends DCLogic {
   </script>
 
   <script>
+    /* Burger menu — event delegation on document, survives DOM re-renders. */
     (function(){
-      var nav = document.getElementById('site-nav');
-      if (!nav) return;
-      var burger = nav.querySelector('.nav__burger');
-      var menu = nav.querySelector('.nav__links');
-      if (!burger || !menu) return;
-      var close = function(){ nav.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); };
-      var open  = function(){ nav.classList.add('is-open'); burger.setAttribute('aria-expanded', 'true'); };
-      burger.addEventListener('click', function(ev){
-        ev.stopPropagation();
-        if (nav.classList.contains('is-open')) close(); else open();
-      });
-      menu.addEventListener('click', function(ev){
-        var t = ev.target;
-        while (t && t !== menu) { if (t.tagName === 'A') { close(); break; } t = t.parentNode; }
-      });
+      var closeOpenNav = function(exceptNav){
+        document.querySelectorAll('.nav.is-open').forEach(function(n){
+          if (n === exceptNav) return;
+          n.classList.remove('is-open');
+          var b = n.querySelector('.nav__burger');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      };
       document.addEventListener('click', function(ev){
-        if (!nav.classList.contains('is-open')) return;
-        if (nav.contains(ev.target)) return;
-        close();
+        var burger = ev.target.closest ? ev.target.closest('.nav__burger') : null;
+        if (burger) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          var nav = burger.closest('.nav');
+          if (!nav) return;
+          var willOpen = !nav.classList.contains('is-open');
+          nav.classList.toggle('is-open', willOpen);
+          burger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+          return;
+        }
+        var link = ev.target.closest ? ev.target.closest('.nav__links a') : null;
+        if (link) {
+          closeOpenNav(null);
+          return;
+        }
+        var openNav = document.querySelector('.nav.is-open');
+        if (openNav && !openNav.contains(ev.target)) closeOpenNav(null);
       });
-      document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') close(); });
+      document.addEventListener('keydown', function(ev){
+        if (ev.key === 'Escape') closeOpenNav(null);
+      });
     })();
   </script>
 </body>
